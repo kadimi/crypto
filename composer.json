@@ -1,0 +1,23 @@
+{
+    "name": "kadimi/crypto",
+    "description": "The Library of Crypto.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nabil Kadimi",
+            "email": "nabil@kadimi.com"
+        }
+    ],
+    "type": "project",
+    "require": {
+		"php": ">=7"
+    },
+    "require-dev": {
+		"phpunit/phpunit": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Kadimi\\Crypto\\": "src/"
+        }
+    }
+}
