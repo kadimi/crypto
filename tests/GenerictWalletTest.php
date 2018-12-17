@@ -1,45 +1,44 @@
-<?php 
+<?php
 
 namespace Kadimi\Crypto\Tests;
 
-use Kadimi\Crypto\Wallets\GenericWallet;
 use PHPUnit\Framework\TestCase;
+use Kadimi\Crypto\Wallets\GenericWallet;
 
-class GenericWalletTest extends TestCase
+class GenerictWalletTest extends TestCase
 {
-  public function testCreateNewAddressReturnsAString() {
+    public function testCreateNewAddressReturnsAString()
+    {
 
     /**
-     * Mock RequestHandler
+     * Mock RequestHandler.
      */
-    $fakeRequestHandler = $this->getMockBuilder('\Kadimi\Crypto\Contracts\RequestHandler')->getMock();
+        $fakeRequestHandler = $this->getMockBuilder('\Kadimi\Crypto\Contracts\RequestHandler')->getMock();
 
-    /**
-     * Mock WalletService
-     */
-    $fakeWalletService = $this->getMockBuilder('\Kadimi\Crypto\Contracts\WalletService')->getMock();
-    $fakeWalletService->requestHandler = $fakeRequestHandler;
-    $fakeWalletService
+        /**
+         * Mock WalletService.
+         */
+        $fakeWalletService = $this->getMockBuilder('\Kadimi\Crypto\Contracts\WalletService')->getMock();
+        $fakeWalletService->requestHandler = $fakeRequestHandler;
+        $fakeWalletService
       ->expects($this->once())
       ->method('requestBalance')
-      ->will($this->returnValue(0.99))
-    ;
-    $fakeWalletService
+      ->will($this->returnValue(0.99));
+        $fakeWalletService
       ->method('requestNewAddress')
-      ->will($this->returnValue('SomeAddress'))
-    ;
+      ->will($this->returnValue('SomeAddress'));
 
-    /**
-     * Get.
-     */
-    $wallet = new GenericWallet($fakeWalletService);
-    $balance = $wallet->getBalance();
-    $address = $wallet->createNewAddress();
+        /**
+         * Get.
+         */
+        $wallet = new GenericWallet($fakeWalletService);
+        $balance = $wallet->getBalance();
+        $address = $wallet->createNewAddress();
 
-    /**
-     * Test.
-     */
-    $this->assertEquals($balance, 0.99);
-    $this->assertEquals($address, 'SomeAddress');
-  }
+        /*
+         * Test.
+         */
+        $this->assertEquals($balance, 0.99);
+        $this->assertEquals($address, 'SomeAddress');
+    }
 }

@@ -2,18 +2,17 @@
 
 namespace Kadimi\Crypto\RequestHandlers;
 
-use Kadimi\Crypto\Contracts\RequestHandler as RequestHandlerContract;
 use Kadimi\Crypto\Traits\MakesRequest;
+use Kadimi\Crypto\Contracts\RequestHandler as RequestHandlerContract;
 
 class HTTPRequestHandler implements RequestHandlerContract
 {
+    use MakesRequest;
 
-  use MakesRequest;
+    protected $credentials;
 
-  protected $credentials;
-
-  public function setCredentials(array $credentials = [])
-  {
-    $this->credentials = $credentials;
-  }
+    public function setCredentials(array $credentials = [])
+    {
+        $this->credentials = $credentials;
+    }
 }

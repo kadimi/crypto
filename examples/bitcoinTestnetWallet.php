@@ -2,9 +2,9 @@
 
 namespace Kadimi\Crypto;
 
-use Kadimi\Crypto\RequestHandlers\BlockIORequestHandler;
-use Kadimi\Crypto\WalletServices\GenericWalletService;
 use Kadimi\Crypto\Wallets\GenericWallet;
+use Kadimi\Crypto\WalletServices\GenericWalletService;
+use Kadimi\Crypto\RequestHandlers\BlockIORequestHandler;
 
 include 'vendor/autoload.php';
 
@@ -23,7 +23,7 @@ $handler->setCredentials($credentials);
 $walletService = new GenericWalletService($handler);
 $Wallet = new GenericWallet($walletService);
 
-/**
+/*
  * Get balance.
  */
 echo $Wallet->getBalance();

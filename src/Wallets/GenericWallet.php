@@ -7,7 +7,6 @@ use Kadimi\Crypto\Contracts\WalletService as WalletServiceContract;
 
 class GenericWallet implements WalletContract
 {
-
     public $walletService;
 
     public function __construct(WalletServiceContract $walletService)
