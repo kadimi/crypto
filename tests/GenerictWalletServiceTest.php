@@ -1,28 +1,29 @@
-<?php 
+<?php
 
 namespace Kadimi\Crypto\Tests;
 
-use Kadimi\Crypto\WalletServices\GenericWalletService;
 use PHPUnit\Framework\TestCase;
+use Kadimi\Crypto\WalletServices\GenericWalletService;
 
-class GenericWalletServiceTest extends TestCase
+class GenerictWalletServiceTest extends TestCase
 {
-  public function testCreateNewAddressReturnsAString() {
+    public function testCreateNewAddressReturnsAString()
+    {
 
     /**
-     * Mock RequestHandler
+     * Mock RequestHandler.
      */
-    $fakeRequestHandler = $this->getMockBuilder('\Kadimi\Crypto\Contracts\RequestHandler')->getMock();
+        $fakeRequestHandler = $this->getMockBuilder('\Kadimi\Crypto\Contracts\RequestHandler')->getMock();
 
-    /**
-     * Get.
-     */
-    $walletService = new GenericWalletService($fakeRequestHandler);
+        /**
+         * Get.
+         */
+        $walletService = new GenericWalletService($fakeRequestHandler);
 
-    /**
-     * Test.
-     */
-    
-    $this->assertInstanceOf('Kadimi\Crypto\WalletServices\GenericWalletService', $walletService);
-  }
+        /*
+         * Test.
+         */
+
+        $this->assertInstanceOf('Kadimi\Crypto\WalletServices\GenericWalletService', $walletService);
+    }
 }
