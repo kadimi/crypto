@@ -2,10 +2,10 @@
 
 namespace Kadimi\Crypto\Tests;
 
-use Kadimi\Crypto\Wallet;
+use Kadimi\Crypto\Wallets\GenericWallet;
 use PHPUnit\Framework\TestCase;
 
-class WalletTest extends TestCase
+class GenericWalletTest extends TestCase
 {
   public function testCreateNewAddressReturnsAString() {
 
@@ -21,19 +21,25 @@ class WalletTest extends TestCase
     $fakeWalletService->requestHandler = $fakeRequestHandler;
     $fakeWalletService
       ->expects($this->once())
+      ->method('requestBalance')
+      ->will($this->returnValue(0.99))
+    ;
+    $fakeWalletService
       ->method('requestNewAddress')
-      ->will($this->returnValue('Wallet Address'))
+      ->will($this->returnValue('SomeAddress'))
     ;
 
     /**
-     * Create address.
+     * Get.
      */
-    $wallet = new Wallet($fakeWalletService);
+    $wallet = new GenericWallet($fakeWalletService);
+    $balance = $wallet->getBalance();
     $address = $wallet->createNewAddress();
 
     /**
-     * Assert.
+     * Test.
      */
-    $this->assertEquals($address, 'Wallet Address');
+    $this->assertEquals($balance, 0.99);
+    $this->assertEquals($address, 'SomeAddress');
   }
 }

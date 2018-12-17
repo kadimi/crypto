@@ -6,10 +6,8 @@ use Kadimi\Crypto\Contracts\RequestHandler;
 
 interface WalletService
 {
-
-	public function __construct(RequestHandler $requestHandler, string $uri = '', array $credentials = []);
-
-	public function request(array $parameters = []);
-
-	public function requestNewAddress() : string;
+  public function __construct(RequestHandler $requestHandler);
+  public function request($path, array $query = []);
+  public function requestNewAddress();
+  public function requestBalance();
 }

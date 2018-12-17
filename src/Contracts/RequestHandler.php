@@ -3,8 +3,7 @@
 namespace Kadimi\Crypto\Contracts;
 
 interface RequestHandler{
-
-	public function __construct(string $uri = '', array $credentials = []);
-
-	public function request(array $parameters = []);
+  public function setCredentials(array $credentials);
+  public function makeRequest($path, array $parameters = [], array $args = [], $private);
+  public function makePrivateRequest($path, array $parameters = [], array $args = []);
 }
